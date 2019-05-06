@@ -397,13 +397,14 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"seed1.kepler.cash", ""};
+static const string mainnet_seeds[] = {"seed1.kepler.cash", "seed2.kepler.cash", ""};
 static const string testnet_seeds[] = {"testnet-seed.kepler.cash",""};
 
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
+    db.Add(CService("3.14.178.190", 12102), true);
     //db.Add(CService("kjy2eqzk4zwi5zd3.onion", 12102), true);
   }
   do {
